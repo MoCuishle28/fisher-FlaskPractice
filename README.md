@@ -1,5 +1,7 @@
 学习Flask的练习代码
 
+fisher是一个用于分享图书的网站，支持赠送图书 获赠图书
+
 关键点:
 	1.蓝图
 	2.current_app, current_user 的理解
