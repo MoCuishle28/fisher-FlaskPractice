@@ -24,7 +24,7 @@ __author__ = '七月'
 @login_required
 def my_wish():
     uid = current_user.id
-    wishes_of_mine = Wish.get_user_wishes(uid)
+    wishes_of_mine = Wish.get_user_wishes(uid)  # 返回了None 因为数据库还是空的
     isbn_list = [wish.isbn for wish in wishes_of_mine]
     gift_count_list = Wish.get_gifts_counts(isbn_list)
     view_model = MyWishes(wishes_of_mine, gift_count_list)

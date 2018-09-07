@@ -19,9 +19,11 @@ __author__ = '七月'
 @login_required     # 必须要登录才能访问的视图函数
 def my_gifts():
     uid = current_user.id
+    gifts = Gift.query.filter_by(uid=uid, launched=False).order_by(
+        desc(Gift.create_time)).all()
     gifts_of_mine = Gift.get_user_gifts(uid)
     isbn_list = [gift.isbn for gift in gifts]
-    wish_count_list = Gift.get_wish_count(isbn_list)
+    wish_count_list = Gift.get_wish_counts(isbn_list)
     view_model = MyGifts(gifts_of_mine, wish_count_list)
     return render_template('my_gifts.html', gifts=view_model.gifts)
 
