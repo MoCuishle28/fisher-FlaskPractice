@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<!-- url_for的参数->(endpoint, 文件名) 所有涉及url(包括js,图片,页面重定向...)的都推荐使用url_for()函数 -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='test.css') }}">
+</head>
+<!-- 模板继承 -->
+<body>
+	{% block head %}
+		<div>This is head</div>
+	{%endblock%}
+
+	{%block content%}
+		<div>This is content</div>
+	{%endblock%}
+
+	{%block foot%}
+		<div>This is foot</div>
+	{%endblock%}
+</body>
+</html>

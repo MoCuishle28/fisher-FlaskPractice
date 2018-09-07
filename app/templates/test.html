@@ -1,0 +1,31 @@
+{%extends 'layout.html' %}
+
+<!-- 想将以下代码包含入那个block就写那个block名字 -->
+{% block content%}
+	<!-- 想不覆盖父模板的该block的内容要写super() -->
+	{{ super() }}
+	{% if data.age < 18%}
+		{{data.age}}
+		<ul></ul>
+	{% elif data.age == 18%}
+		<p>i am {{data.age}}</p>
+		<!-- 过滤器 属性若不存在则显示default   即：会将'|'前面的表达式传入后面 若为False则会显示default（可以有多个 '|' ）-->
+		<p>学校 :{{data.school | default('未知')}}</p>
+		<!-- 定义（set关键字）message 接受闪现消息 -->
+		<p>{% set message = get_flashed_messages() %}</p>
+		<p>{{message}}</p>
+	{% else %}
+		do somthing
+	{% endif %}
+
+	<p>--------------------------</p>
+	{% for foo in [1,2,3]%}
+			{{ foo }}
+	{% endfor %}
+	<p>--------------------------</p>
+
+	{% for k,v in data.items() %}
+		{{k}} : {{v}}
+		<p></p>
+	{%endfor%}
+{%endblock%}
